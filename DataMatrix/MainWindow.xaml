@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <RichTextBox Name="TextInput" BorderThickness="2" HorizontalAlignment="Center" Height="210" Margin="10,10,10,10" VerticalAlignment="Center" Width="760" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionBrush="#FFABADB3" FontSize="16" Loaded="TextInput_Loaded">
+        <RichTextBox Name="TextInput" BorderThickness="2" HorizontalAlignment="Center" Height="210" Margin="10,10,10,10" VerticalAlignment="Center" Width="760" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionBrush="#FFABADB3" FontSize="16" Loaded="TextInput_Loaded" TextChanged="TextInput_TextChanged">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Fock you"/>
@@ -25,5 +25,6 @@
         </RichTextBox>
         <Image Name="Image1" HorizontalAlignment="Center"  Height="Auto" Margin="10,10,10,10" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Width="Auto"/>
         <Image Name="Image2" HorizontalAlignment="Center"  Height="Auto" Margin="10,10,10,10" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Width="Auto"/>
+        <Label Name="ErrorLabel" HorizontalAlignment="Center" Margin="10,10,10,10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Foreground="Red"/>
     </Grid>
 </Window>

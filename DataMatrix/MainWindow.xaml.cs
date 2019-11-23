@@ -25,27 +25,52 @@ namespace DataMatrix
         {
             InitializeComponent();
         }
-        
+
         private void TextInput_Loaded(object sender, RoutedEventArgs e)
+        {
+            DoMyJob();
+        }
+        private void TextInput_TextChanged(object sender, TextChangedEventArgs e)
         {
             DoMyJob();
         }
 
         private void DoMyJob()
         {
-            string text = new TextRange(TextInput.Document.ContentStart, TextInput.Document.ContentEnd).Text;
+            if (ErrorLabel != null)
+            {
+                ErrorLabel.Content = null;
+            }
 
-            GeneratedBarcode myBarcode =  BarcodeWriter.CreateBarcode(text, BarcodeWriterEncoding.DataMatrix );
-            BarcodeWriter.CreateBarcode()
+            string text = new TextRange(TextInput.Document.ContentStart, TextInput.Document.ContentEnd).Text.Trim();
 
-            IntPtr hBitmap = myBarcode.ToBitmap().GetHbitmap();
-            ImageSource WpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            if (!string.IsNullOrEmpty(text) && Image1 != null)
+            {
+                Image1.Source = null;
 
-            Image1.Source = WpfBitmap;
+                try
+                {
+                    GeneratedBarcode myBarcode = BarcodeWriter.CreateBarcode(text, BarcodeWriterEncoding.DataMatrix);
+                    IntPtr hBitmap = myBarcode.ToBitmap().GetHbitmap();
+                    ImageSource wpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
 
-            text = "123";
+                    Image1.Source = wpfBitmap;
+                }
+                catch (Exception e)
+                {
+                    if (ErrorLabel != null)
+                        ErrorLabel.Content = e.Message.ToString();
+                }
+                
+            }
+            else
+            {
+                if (text == "" && Image1 != null)
+                {
+                    Image1.Source = null;
+                }
+            }
+
         }
-
-
     }
 }
