@@ -1,0 +1,17 @@
+D:\Programming\CSHARP\Practices\DataMatrix\bin\Debug\DataMatrix.exe.config
+D:\Programming\CSHARP\Practices\DataMatrix\bin\Debug\DataMatrix.exe
+D:\Programming\CSHARP\Practices\DataMatrix\bin\Debug\DataMatrix.pdb
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.csprojAssemblyReference.cache
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\MainWindow.g.cs
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\App.g.cs
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix_MarkupCompile.cache
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix_MarkupCompile.lref
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\MainWindow.baml
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.g.resources
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.Properties.Resources.resources
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.csproj.GenerateResource.cache
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.csproj.CopyComplete
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.exe
+D:\Programming\CSHARP\Practices\DataMatrix\obj\Debug\DataMatrix.pdb
+D:\Programming\CSHARP\Practices\DataMatrix\bin\Debug\IronBarCode.dll
+D:\Programming\CSHARP\Practices\DataMatrix\bin\Debug\IronBarCode.xml
