@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <RichTextBox Name="TextInput" BorderThickness="2" HorizontalAlignment="Center" Height="210" Margin="10,10,10,10" VerticalAlignment="Center" Width="760" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionBrush="#FFABADB3" FontSize="16" Loaded="TextInput_Loaded" TextChanged="TextInput_TextChanged">
+        <RichTextBox Name="TextInput" BorderThickness="2" HorizontalAlignment="Center" Height="210" Margin="10,10,10,10" VerticalAlignment="Center" Width="760" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" SelectionBrush="#FFABADB3" FontSize="16" TextChanged="TextInput_TextChanged" Loaded="TextInput_Loaded">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="Fock you"/>

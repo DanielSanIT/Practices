@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using IronBarCode;
+using System.Timers;
 
 namespace DataMatrix
 {
@@ -51,17 +44,18 @@ namespace DataMatrix
                 try
                 {
                     GeneratedBarcode myBarcode = BarcodeWriter.CreateBarcode(text, BarcodeWriterEncoding.DataMatrix);
-                    IntPtr hBitmap = myBarcode.ToBitmap().GetHbitmap();
-                    ImageSource wpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                    IntPtr hBitmap = myBarcode.ToBitmap().GetHbitmap(); // Волшебное превращение непонятно во что
+                    ImageSource wpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap,
+                        IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
 
                     Image1.Source = wpfBitmap;
                 }
                 catch (Exception e)
                 {
                     if (ErrorLabel != null)
-                        ErrorLabel.Content = e.Message.ToString();
+                        ErrorLabel.Content = e.Message;
                 }
-                
+
             }
             else
             {
