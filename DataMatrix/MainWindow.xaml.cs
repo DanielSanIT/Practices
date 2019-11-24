@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using IronBarCode;
-using System.Timers;
 
 namespace DataMatrix
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -39,16 +40,12 @@ namespace DataMatrix
 
             if (!string.IsNullOrEmpty(text) && Image1 != null)
             {
-                Image1.Source = null;
-
                 try
                 {
-                    GeneratedBarcode myBarcode = BarcodeWriter.CreateBarcode(text, BarcodeWriterEncoding.DataMatrix);
-                    IntPtr hBitmap = myBarcode.ToBitmap().GetHbitmap(); // Волшебное превращение непонятно во что
-                    ImageSource wpfBitmap = System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(hBitmap,
-                        IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                    Image1.Source = null;
 
-                    Image1.Source = wpfBitmap;
+                    GeneratedBarcode myBarcode = BarcodeWriter.CreateBarcode(text, BarcodeWriterEncoding.DataMatrix);
+                    Image1.Source = Convert(myBarcode.ToBitmap());
                 }
                 catch (Exception e)
                 {
@@ -65,6 +62,19 @@ namespace DataMatrix
                 }
             }
 
+        }
+
+        private static BitmapImage Convert(Bitmap src)
+        {
+            MemoryStream ms = new MemoryStream();
+            ((Bitmap)src).Save(ms, System.Drawing.Imaging.ImageFormat.Bmp); // What is happening here?
+            BitmapImage image = new BitmapImage();
+            image.BeginInit();
+            ms.Seek(0, SeekOrigin.Begin);
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.StreamSource = ms;
+            image.EndInit();
+            return image;
         }
     }
 }
